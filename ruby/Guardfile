@@ -7,7 +7,9 @@ group :red_green_refactor, halt_on_fail: true do
     watch('Gemfile')
   end
 
-  guard :minitest, failed_mode: :keep, all_after_pass: true do
+  guard :minitest, failed_mode: :keep,
+                   all_after_pass: true,
+                   include: ['lib', 'test'] do
     watch(%r{^test/(.*)\/?test_(.*)\.rb$})
     watch(%r{^test/(.*)\/?(.*)_test\.rb$})
     watch(%r{^lib/(.*/)?([^/]+)\.rb$}) do |m|

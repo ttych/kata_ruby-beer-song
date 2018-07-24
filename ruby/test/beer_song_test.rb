@@ -1,11 +1,10 @@
 require 'minitest/autorun'
-# require_relative 'beer_song'
+require 'beer_song'
 
 # rubocop:disable Metrics/LineLength, Metrics/ClassLength
 # BeerSong tests in TDD style
 class BeerSongTest < Minitest::Test
   def test_the_first_verse
-    skip
     expected = "99 bottles of beer on the wall, 99 bottles of beer.\n" \
       "Take one down and pass it around, 98 bottles of beer on the wall.\n"
     assert_equal expected, BeerSong.new.verse(99)
