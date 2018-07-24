@@ -1,13 +1,24 @@
 # BeerSong lyrics as Code
 class BeerSong
-  VERSE = '%<id>s of beer on the wall,' \
-          " %<id>s of beer.\n" \
-          'Take one down and pass it around,' \
-          " %<next_id>s of beer on the wall.\n".freeze
+  VERSE_DEFAULT = '%<id>s of beer on the wall,' \
+                  " %<id>s of beer.\n" \
+                  'Take one down and pass it around,' \
+                  " %<next_id>s of beer on the wall.\n".freeze
+
+  VERSE_LAST = '%<id>s of beer on the wall,' \
+               " %<id>s of beer.\n" \
+               'Take it down and pass it around,' \
+               " no more bottles of beer on the wall.\n".freeze
+
   BOTTLE = 'bottle'.freeze
 
   def verse(id)
-    format(VERSE, id: _n_bottle_s(id),
+    verse = if id == 1
+              VERSE_LAST
+            else
+              VERSE_DEFAULT
+            end
+    format(verse, id: _n_bottle_s(id),
                   next_id: _n_bottle_s(id - 1))
   end
 
