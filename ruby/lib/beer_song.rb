@@ -10,10 +10,17 @@ class BeerSong
                'Take it down and pass it around,' \
                " no more bottles of beer on the wall.\n".freeze
 
+  VERSE_RESET = 'No more bottles of beer on the wall,' \
+                " no more bottles of beer.\n" \
+                'Go to the store and buy some more,' \
+                " 99 bottles of beer on the wall.\n".freeze
+
   BOTTLE = 'bottle'.freeze
 
   def verse(id)
-    verse = if id == 1
+    verse = if id.zero?
+              VERSE_RESET
+            elsif id == 1
               VERSE_LAST
             else
               VERSE_DEFAULT

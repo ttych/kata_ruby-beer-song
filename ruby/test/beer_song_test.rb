@@ -29,7 +29,6 @@ class BeerSongTest < Minitest::Test
   end
 
   def test_verse_0_is_correct
-    skip
     expected = "No more bottles of beer on the wall, no more bottles of beer.\n" \
       "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
     assert_equal expected, BeerSong.new.verse(0)
