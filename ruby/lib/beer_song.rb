@@ -1,3 +1,5 @@
+require 'book_keeping'
+
 # BeerSong lyrics as Code
 class BeerSong
   VERSE_DEFAULT = '%<id>s of beer on the wall,' \

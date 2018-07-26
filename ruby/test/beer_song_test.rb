@@ -367,7 +367,6 @@ class BeerSongTest < Minitest::Test
   #
   # Define a constant named VERSION inside of BookKeeping.
   def test_bookkeeping
-    skip
     assert_equal 2, BookKeeping::VERSION
   end
 end
