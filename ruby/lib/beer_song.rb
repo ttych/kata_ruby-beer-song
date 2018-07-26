@@ -29,6 +29,12 @@ class BeerSong
                   next_id: _n_bottle_s(id - 1))
   end
 
+  def verses(id_start, id_end)
+    id_start.downto(id_end)
+            .map { |index| verse(index) }
+            .join("\n")
+  end
+
   private
 
   def _n_bottle_s(id)
