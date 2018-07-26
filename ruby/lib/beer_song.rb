@@ -35,6 +35,10 @@ class BeerSong
             .join("\n")
   end
 
+  def lyrics
+    verses(99, 0)
+  end
+
   private
 
   def _n_bottle_s(id)
