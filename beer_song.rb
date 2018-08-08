@@ -5,9 +5,9 @@ class BeerSong
 
   def verse(nb_beer)
     case nb_beer
-    when 1..100
+    when 0..100
 
-      VERSE % [bottles(nb_beer),
+      VERSE % [bottles(nb_beer).capitalize,
                bottles(nb_beer),
                action(nb_beer),
                bottles(nb_beer - 1)]
@@ -18,9 +18,9 @@ class BeerSong
     # when 1
     #   "1 bottle of beer on the wall, 1 bottle of beer.\n" \
     #   "Take it down and pass it around, no more bottles of beer on the wall.\n"
-    when 0
-      "No more bottles of beer on the wall, no more bottles of beer.\n" \
-      "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
+    # when 0
+      # "No more bottles of beer on the wall, no more bottles of beer.\n" \
+      # "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
     end
   end
 
@@ -29,18 +29,16 @@ class BeerSong
   end
 
   def bottles(nb_beer)
-    if nb_beer > 0
-      "#{nb_beer} bottle#{nb_beer > 1 ? 's' : ''}"
-    else
-      'no more bottles'
-    end
+      "#{nb_beer > 0 ? nb_beer : 'no more'} bottle#{nb_beer == 1 ? '' : 's'}"
   end
 
   def action(nb_beer)
     if nb_beer > 1
       'Take one down and pass it around'
-    else
+    elsif nb_beer == 1
       'Take it down and pass it around'
+    else
+      'Go to the store and buy some more'
     end
   end
 end
