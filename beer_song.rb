@@ -1,35 +1,28 @@
 # BeerSong class
 class BeerSong
   VERSE = "%s of beer on the wall, %s of beer.\n" \
-          "%s, %s of beer on the wall.\n"
+          "%s, %s of beer on the wall.\n".freeze
 
   def verse(nb_beer)
-    case nb_beer
-    when 0..100
-
-      VERSE % [bottles(nb_beer).capitalize,
-               bottles(nb_beer),
-               action(nb_beer),
-               bottles(nb_beer - 1)]
-
-    # when 2
-    #   "2 bottles of beer on the wall, 2 bottles of beer.\n" \
-    #   "Take one down and pass it around, 1 bottle of beer on the wall.\n"
-    # when 1
-    #   "1 bottle of beer on the wall, 1 bottle of beer.\n" \
-    #   "Take it down and pass it around, no more bottles of beer on the wall.\n"
-    # when 0
-      # "No more bottles of beer on the wall, no more bottles of beer.\n" \
-      # "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
-    end
+    format(VERSE, bottles(nb_beer).capitalize,
+                  bottles(nb_beer),
+                  action(nb_beer),
+                  bottles(nb_beer - 1))
   end
 
   def verses(nba, nbb)
-    verse(nba) + "\n" + verse(nbb)
+    nba.downto(nbb)
+       .map { |nb_beer| verse(nb_beer) }
+       .join("\n")
+  end
+
+  def lyrics
+    verses(99, 0)
   end
 
   def bottles(nb_beer)
-      "#{nb_beer > 0 ? nb_beer : 'no more'} bottle#{nb_beer == 1 ? '' : 's'}"
+    nb_beer = 99 if nb_beer < 0
+    "#{nb_beer > 0 ? nb_beer : 'no more'} bottle#{nb_beer == 1 ? '' : 's'}"
   end
 
   def action(nb_beer)
@@ -41,4 +34,8 @@ class BeerSong
       'Go to the store and buy some more'
     end
   end
+end
+
+module BookKeeping
+  VERSION = 2
 end
