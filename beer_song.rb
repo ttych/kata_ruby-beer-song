@@ -21,8 +21,10 @@ class BeerSong
   end
 
   def bottles(nb_beer)
+    @cache ||= {}
+    return @cache[nb_beer] if @cache[nb_beer]
     nb_beer = 99 if nb_beer < 0
-    "#{nb_beer > 0 ? nb_beer : 'no more'} bottle#{nb_beer == 1 ? '' : 's'}"
+    @cache[nb_beer] = "#{nb_beer > 0 ? nb_beer : 'no more'} bottle#{nb_beer == 1 ? '' : 's'}"
   end
 
   def action(nb_beer)
