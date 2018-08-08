@@ -1,10 +1,13 @@
+# BeerSong class
 class BeerSong
-	def verse (nb)
-		if nb>1
-			"#{nb} bottles of beer on the wall, #{nb} bottles of beer.\nTake one down and pass it around, #{nb-1} bottles of beer on the wall.\n"
-		else
-			"3 bottles of beer on the wall, 3 bottles of beer.\nTake one down and pass it around, 2 bottles of beer on the wall.\n"
-		end
-
-	end
+  def verse(nb_beer)
+    if nb_beer > 2
+      "#{nb_beer} bottles of beer on the wall, #{nb_beer} bottles of beer.\n" \
+      'Take one down and pass it around, ' \
+      "#{nb_beer - 1} bottles of beer on the wall.\n"
+    elsif nb_beer == 2
+      "2 bottles of beer on the wall, 2 bottles of beer.\n" \
+      "Take one down and pass it around, 1 bottle of beer on the wall.\n"
+    end
+  end
 end
